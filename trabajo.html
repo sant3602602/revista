@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Revista Ética - IA</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg,#0f172a,#1e293b);
+    color: white;
+    overflow: hidden;
+}
+
+.page {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    padding: 60px;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.page.active { display: flex; }
+
+h1 { font-size: 50px; }
+h2 { font-size: 34px; }
+p {
+    max-width: 900px;
+    line-height: 1.7;
+    font-size: 18px;
+}
+
+.highlight { color: #38bdf8; }
+
+.nav {
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+button {
+    padding: 12px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+    background: #38bdf8;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.option {
+    margin: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid #38bdf8;
+    cursor: pointer;
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #4ade80;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PORTADA -->
+<div class="page active">
+<h1>¿Quién decide por nosotros?</h1>
+<p class="highlight">Ética de la inteligencia artificial</p>
+<p>Hecho por Santiago Morales Toro</p>
+</div>
+
+<!-- INTRO -->
+<div class="page">
+<h2>Introducción</h2>
+<p>
+Actualmente vivimos en una sociedad donde la tecnología influye en casi todas nuestras decisiones.
+La inteligencia artificial no solo recomienda contenido, sino que también puede influir en decisiones importantes como empleos, créditos o acceso a información.
+Esto plantea una pregunta fundamental: ¿hasta qué punto seguimos siendo libres?
+</p>
+</div>
+
+<!-- CONTEXTO -->
+<div class="page">
+<h2>Contexto actual</h2>
+<p>
+La inteligencia artificial está presente en redes sociales, bancos, empresas y sistemas de salud.
+Su uso ha crecido rápidamente, pero no siempre se ha acompañado de una reflexión ética.
+Esto genera riesgos como discriminación, pérdida de privacidad y decisiones injustas.
+</p>
+</div>
+
+<!-- PROBLEMA -->
+<div class="page">
+<h2>Problema ético</h2>
+<p>
+El principal problema es que las máquinas toman decisiones sin comprender valores humanos.
+Esto genera dilemas como:
+<br><br>
+• ¿Es justo automatizar decisiones humanas?<br>
+• ¿Quién responde por los errores?<br>
+• ¿Se respetan los derechos humanos?
+</p>
+</div>
+
+<!-- ANALISIS -->
+<div class="page">
+<h2>Análisis ético</h2>
+<p>
+La ética aplicada plantea que debemos analizar situaciones reales.
+En este caso, la inteligencia artificial puede ser eficiente,
+pero también puede generar desigualdad.
+Esto demuestra que no todo avance tecnológico es automáticamente bueno.
+</p>
+</div>
+
+<!-- SUJETO MORAL -->
+<div class="page">
+<h2>Sujeto moral</h2>
+<p>
+El ser humano sigue siendo responsable de las decisiones.
+Aunque la tecnología automatiza procesos,
+las decisiones finales siguen siendo humanas.
+Esto demuestra que somos sujetos morales con responsabilidad.
+</p>
+</div>
+
+<!-- IMPACTO -->
+<div class="page">
+<h2>Impacto social</h2>
+<p>
+La inteligencia artificial puede mejorar la vida,
+pero también puede generar problemas como:
+<br><br>
+• pérdida de privacidad<br>
+• desigualdad<br>
+• manipulación de información
+</p>
+</div>
+
+<!-- POSTURA -->
+<div class="page">
+<h2>Postura personal</h2>
+<p>
+Considero que la inteligencia artificial es una herramienta útil,
+pero debe ser regulada éticamente.
+No se puede permitir que las decisiones importantes se tomen sin supervisión humana.
+</p>
+</div>
+
+<!-- CONCLUSION -->
+<div class="page">
+<h2>Conclusión</h2>
+<p>
+La ética es fundamental para guiar el uso de la tecnología.
+El ser humano debe seguir siendo responsable de las decisiones,
+garantizando que se respete la dignidad humana.
+</p>
+</div>
+
+<!-- INTERACTIVO -->
+<div class="page">
+<h2>Mini experimento ético</h2>
+
+<p>1. Una IA decide a quién contratar</p>
+<div class="option" onclick="res(1,1)">Aceptar decisión</div>
+<div class="option" onclick="res(1,2)">Revisar manualmente</div>
+
+<p>2. Una IA recomienda noticias</p>
+<div class="option" onclick="res(2,1)">Confiar en IA</div>
+<div class="option" onclick="res(2,2)">Buscar otras fuentes</div>
+
+<p>3. Una IA decide créditos</p>
+<div class="option" onclick="res(3,1)">Aceptar sistema</div>
+<div class="option" onclick="res(3,2)">Revisión humana</div>
+
+<div id="resultado" class="result"></div>
+</div>
+
+<!-- REFERENCIAS -->
+<div class="page">
+<h2>Referencias</h2>
+<p>
+Victoria Camps<br>
+Peter Singer<br>
+Bobadilla González (2025)<br>
+Nussbaum (2011)
+</p>
+</div>
+
+<div class="nav">
+<button onclick="prev()">⬅</button>
+<button onclick="next()">➡</button>
+</div>
+
+<script>
+let pages = document.querySelectorAll(".page");
+let current = 0;
+
+function showPage(i){
+    pages[current].classList.remove("active");
+    current = i;
+    pages[current].classList.add("active");
+}
+
+function next(){ if(current < pages.length-1) showPage(current+1); }
+function prev(){ if(current > 0) showPage(current-1); }
+
+// NUEVA LÓGICA MEJORADA
+let respuestas = [null,null,null];
+
+function res(pregunta, op){
+    respuestas[pregunta-1] = op;
+
+    let respondidas = respuestas.filter(r => r !== null).length;
+    let human = respuestas.filter(r => r === 2).length;
+
+    let texto = "";
+
+    if(respondidas < 3){
+        texto = "Has respondido " + respondidas + " de 3 preguntas. Sigue respondiendo para ver tu perfil ético.";
+    } else {
+        if(human >= 2){
+            texto = "Tus decisiones reflejan una postura ética orientada a la justicia y la intervención humana.";
+        } else {
+            texto = "Tus decisiones reflejan una postura orientada a la eficiencia y confianza en la tecnología.";
+        }
+    }
+
+    document.getElementById("resultado").innerText = texto;
+}
+</script>
+
+</body>
+</html>
